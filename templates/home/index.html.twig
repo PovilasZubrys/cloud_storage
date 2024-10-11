@@ -8,8 +8,14 @@
     .example-wrapper code { background: #F5F5F5; padding: 2px 6px; }
 </style>
 
-<div class="example-wrapper">
-    <h1>Hello {{ controller_name }}! ✅</h1>
-    Hi Mr. {{ email }}
-</div>
+    {% for directory in directories %}
+        <div class="example-wrapper">
+            <a href="{{ path('app_home', {'directory': file.filename }) }}">{{ file.filename }}</a>
+        </div>
+    {% endfor %}
+    {% for file in files  %}
+            <div class="example-wrapper">
+                <a href="{{ path('app_download_file', {'fileName': file.filename }) }}">{{ file.filename }}</a>
+            </div>
+    {% endfor %}
 {% endblock %}

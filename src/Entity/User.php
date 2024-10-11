@@ -39,6 +39,9 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     #[ORM\Column(length: 255, nullable: true)]
     private ?string $surname = null;
 
+    #[ORM\Column(length: 255)]
+    private ?string $main_directory = null;
+
     public function getId(): ?int
     {
         return $this->id;
@@ -134,6 +137,18 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     public function setSurname(?string $surname): static
     {
         $this->surname = $surname;
+
+        return $this;
+    }
+
+    public function getMainDirectory(): ?string
+    {
+        return $this->main_directory;
+    }
+
+    public function setMainDirectory(string $main_directory): static
+    {
+        $this->main_directory = $main_directory;
 
         return $this;
     }
